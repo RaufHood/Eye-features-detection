@@ -1,0 +1,4 @@
+{ "git.enabled": true,
+"git.path": "C:/Program Files/Git/bin/git.exe", // Adjust this path if your Git is installed in a different location
+"git.repository": ["C:/Users/hohih/optimeyes"]
+}
