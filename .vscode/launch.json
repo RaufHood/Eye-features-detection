@@ -1,0 +1,15 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        
+        {
+            "name": "Python Debugger: Current File",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "args": ["--arg1", "value1"], // If you need to pass arguments
+            "env": {"MY_ENV_VARIABLE": "some_value"} // If you need to set environment variables
+        }
+    ]
+}
