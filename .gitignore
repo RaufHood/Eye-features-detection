@@ -1,7 +1,6 @@
 .venv
-smth/
-smth
-.smth/
-.smth
 venv/
 dataset/
+models/
+__pycache__
+.vscode/

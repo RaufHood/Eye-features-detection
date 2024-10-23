@@ -9,16 +9,13 @@ def get_largest_detection(detections):
     return max(detections, key=lambda rect: rect[2] * rect[3])
 
 def crop_image(largest_eye, image):
+    """Return a cropped image based on the pixel location of largest_eye."""
     if largest_eye is not None:
         ex, ey, ew, eh = largest_eye
         # Draw a rectangle around the detected eye
         cv2.rectangle(image, (ex, ey), (ex + ew, ey + eh), (0, 255, 0), 2)
-        # Crop the image to get only the eye
         eye_img = image[ey:ey+eh, ex:ex+ew]
-        # plt.imshow(eye_img)
-        # plt.show()
-        #im = Image.fromarray(eye_img)
-        #im.save("eyee.jpg")
+        
     else:
         print("No eye detected")
     return eye_img
@@ -56,14 +53,12 @@ def remove_overlapping_circles(circles):
     return valid_circles
 
 def extract_circle_opencv(image, circle):
-
+    "Return an image after applying a circular mask."
     x, y, r = circle
     # Create a mask with the same dimensions as the image, initialized to zero (black)
     mask = np.zeros_like(image)
-    
     # Draw a white circle (value 255) in the mask at position (x, y) with radius r
     cv2.circle(mask, (x, y), r, 255, thickness=-1)
-    
     # Apply the mask using bitwise AND
     result_image = cv2.bitwise_and(image, mask)
     
